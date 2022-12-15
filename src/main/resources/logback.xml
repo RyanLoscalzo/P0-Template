@@ -1,4 +1,4 @@
-<configutation>
+<configuration>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
 
@@ -18,4 +18,4 @@
 
     </root>
 
-</configutation>
+</configuration>
