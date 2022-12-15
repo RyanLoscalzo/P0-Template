@@ -13,7 +13,7 @@ import com.revature.utilities.ConnectionUtil;
 
 public class MoonDao {
     
-    public List<Moon> getAllMoons() throws SQLException{
+    public List<Moon> getAllMoons() {
 		try (Connection connection = ConnectionUtil.createConnection()){
 			// Step 1: Create query as string
 			String sql = "select * from moons";
@@ -30,6 +30,9 @@ public class MoonDao {
 				moons.add(moon);
 			}
 			return moons;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+            return new ArrayList<>();
 		}
 	}
 
@@ -127,7 +130,7 @@ public class MoonDao {
 		}
 	}
 
-	public List<Moon> getMoonsFromPlanet(int planetId) throws SQLException{
+	public List<Moon> getMoonsFromPlanet(int planetId) {
 		try (Connection connection = ConnectionUtil.createConnection()){
 			// Step 1: Create query as string
 			String sql = "select * from moons where myplanetid = ?";
@@ -146,6 +149,9 @@ public class MoonDao {
 				moons.add(moon);
 			}
 			return moons;
+		}  catch (SQLException e) {
+			System.out.println(e.getMessage());
+            return new ArrayList<>();
 		}
 	}
 }

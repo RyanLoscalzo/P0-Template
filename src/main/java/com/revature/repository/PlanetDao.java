@@ -13,7 +13,7 @@ import com.revature.utilities.ConnectionUtil;
 
 public class PlanetDao {
     
-    public List<Planet> getAllPlanets() throws SQLException {
+    public List<Planet> getAllPlanets() {
 		try (Connection connection = ConnectionUtil.createConnection()) {
 			// Step 1: Create query as string
 			String sql = "select * from planets";
@@ -30,6 +30,9 @@ public class PlanetDao {
 				planets.add(planet);
 			}
 			return planets;
+		}  catch (SQLException e) {
+			System.out.println(e.getMessage());
+            return new ArrayList<>();
 		}
 	}
 
