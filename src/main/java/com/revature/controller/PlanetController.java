@@ -1,6 +1,10 @@
 package com.revature.controller;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.revature.models.Moon;
 import com.revature.models.Planet;
@@ -15,9 +19,14 @@ public class PlanetController {
 	
 	private PlanetService pService = new PlanetService();
 
+	public static Logger logger = LoggerFactory.getLogger(PlanetController.class);
+
 	public void getAllPlanets(Context ctx) {
-		
-		ctx.json(pService.getAllPlanets()).status(200);
+		try{
+			ctx.json(pService.getAllPlanets()).status(200);
+		} catch(SQLException e) {
+			logger.error(e.getMessage());
+		}
 	}
 
 	public void getPlanetByName(Context ctx) {

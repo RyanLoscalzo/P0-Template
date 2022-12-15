@@ -14,7 +14,8 @@ public class PlanetService {
 		this.dao = new PlanetDao();
 	}
 
-	public List<Planet> getAllPlanets() {
+	public List<Planet> getAllPlanets() throws SQLException {
+		// DEAL WITH SQL EXCEPTION
 		return this.dao.getAllPlanets();
 	}
 
