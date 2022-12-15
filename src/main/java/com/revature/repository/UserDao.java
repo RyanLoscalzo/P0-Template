@@ -14,10 +14,14 @@ public class UserDao {
     
     public User getUserByUsername(String username){
         try(Connection connection = ConnectionUtil.createConnection()) {
+            // Step 1: Create query as string
             String sql = "select * from users where username = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
+            // Step 2: Provide relvant info
             ps.setString(1, username);
+            // Step 3: Execute the query
             ResultSet rs = ps.executeQuery();
+            // Step 4: Handle the responses
             rs.next();
             User user = new User();
             user.setId(rs.getInt(1));
